@@ -1,0 +1,133 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  background-color: $dark;
+  color: $light;
+  width: calc(2rem + 50px);
+  overflow: hidden;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: 0.2s ease-in-out;
+
+  .flex {
+    flex: 1 1 0%;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+
+    img {
+      width: 2rem;
+    }
+  }
+
+  h3,
+  .menu-item .text {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  h3 {
+    color: $grey;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .menu {
+    margin: 0 -1rem;
+
+    .menu-item {
+      display: flex;
+      appearance: none;
+      border: none;
+      outline: none;
+      background: none;
+      align-items: center;
+      text-decoration: none;
+      transition: 0.2s ease-in-out;
+      padding: 0.5rem 1rem;
+
+      .menu-icon {
+        font-size: 2rem;
+        color: $light;
+        transition: 0.2s ease-in-out;
+      }
+
+      .text {
+        color: $light;
+        transition: 0.2s ease-in-out;
+      }
+
+      &:hover {
+        background-color: $dark-alt;
+
+        .menu-icon,
+        .text {
+          color: $primary;
+        }
+      }
+
+      &.router-link-exact-active {
+        background-color: $dark-alt;
+        border-right: 5px solid $primary;
+
+        .menu-icon,
+        .text {
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  .menu-toggle-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    position: relative;
+    top: 0;
+    transition: 0.2s ease-in-out;
+
+    .menu-toggle {
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        .menu-icon {
+          transform: translateX(0.5rem);
+        }
+      }
+    }
+  }
+
+  &.is-expanded {
+    width: $sidebar-width;
+
+    .menu-toggle-wrap {
+      top: -3rem;
+
+      .menu-toggle {
+        transform: rotate(-180deg);
+      }
+    }
+
+    h3,
+    .menu-item .text {
+      opacity: 1;
+    }
+
+    .menu-item {
+      .menu-icon {
+        margin-right: 1rem;
+      }
+    }
+
+    .footer {
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    position: absolute;
+    z-index: 99;
+  }
+}
